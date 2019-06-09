@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Semestrálka - Berušky</title>
+    <link rel="shortcut icon" href="./images/icon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Shojumaru" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="theme.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+
+<body>
+    <header>
+        <div class="menuToggle">
+            <input id="box-toggle" type="checkbox" />
+            <span class="first-hamburger"></span>
+            <span class="middle-hamburger"></span>
+            <span class="last-hamburger"></span>
+            <button class="mainMenuButton"></button>
+
+            <nav class="mainMenu">
+                <ul>
+                    <li id="resetGame"><a href="#password" class="link">Restart level</a></li>
+                    <li id="newGame"><a href="#newGame" class="link">Nová hra <span id="newGameArrow"> > </span></a>
+                        <ul class="subMenuLevelDifficulties">
+                            <li id="easyLevel"><a href="#easy" class="link">Jednoduchá </a></li>
+                            <li id="mediumLevel"><a href="#medium" class="link">Střední</a></li>
+                            <li id="hardLevel"><a href="#hard" class="link">Těžká </a></li>
+                        </ul>
+                    </li>
+                    <li id="password"><a href="#password" class="link">Heslo <span id="passwdArrow"> > </span></a>
+                    </li>
+                    <li class="password">
+                        <input type="text" id="passwordInput" placeholder="Zadej heslo" size="10">
+                    </li>
+                    <li id="scoreboard"><a href="#scoreboard" class="link">Scoreboard</a></li>
+                    <li id="settings"><a href="#settings" class="link">Nastavení <span id="settingsArrow"> > </span></a>
+                    </li>
+                    <li>
+                        <ul class="settingsProperties">
+                            <li>Zvuk
+                                <input type='checkbox' class='ios8-switch' id='sound'>
+                                <label for='sound'></label>
+                            </li>
+                            <li>Ovládací panel
+                                <input type='checkbox' class='ios8-switch' id='controlPanel'>
+                                <label for='controlPanel'></label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="control"><a href="#control" class="link">Ovládání</a></li>
+                    <li id="rules"><a href="#rules" class="link">Pravidla</a></li>
+                </ul>
+            </nav>
+        </div>
+        <section class="gameName">
+            <h1>Berušky</h1>
+        </section>
+        <div class="connection">
+            <img id="ok-wifi" src="./images/ok-wifi.png" alt="wifi connection ok" height="15" width="20">
+            <img id="no-wifi" src="./images/no-wifi.png" alt="wifi no connection" height="20" width="20">
+        </div>
+    </header>
+
+
+    <div class="main">
+        <!-- 420 deska + 20 dole pocitadlo + 40 nahore berusky = 480 -->
+        <canvas id="boardDesk" width="640" height="480"></canvas>
+        <div class="controlSection">
+            <svg id="svgControl" viewBox="0 0 12 12">
+                <!-- oci berusky -->
+                <ellipse cx="5.58" cy="4.95" rx="0.3" ry="0.4" fill="white" />
+                <ellipse cx="6.42" cy="4.95" rx="0.3" ry="0.4" fill="white" />
+
+                <!-- telo berusky -->
+                <ellipse class="ellipseSvg" cx="6" cy="6.2" rx="1.2" ry="1.4" fill="red" />
+                <ellipse class="ellipseSvg" cx="6" cy="6.4" rx="1.3" ry="1.4" fill="red" />
+                <ellipse class="ellipseSvg" cx="6.01" cy="6.6" rx="1" ry="1.35" fill="red" />
+                <image xlink:href="./images/iconControl.png" x="4" y="4" height="4" width="4" />
+            </svg>
+        </div>
+        <div class="restMain">
+        </div>
+
+
+    </div>
+
+    <div class="scoreboard"></div>
+    <button class="scoreboardBlackButton"></button>
+
+    <footer>
+        Převzatá hra od tvůrců Anakreon, licence GPL.
+    </footer>
+
+
+
+
+    <script src="./levels.js"></script>
+    <script src="./Render.js"></script>
+    <script src="./Controller.js"></script>
+    <script src="./Actor.js"></script>
+    <script src="./menu.js"></script>
+    <script src="./dragAndDropControlPanel.js"></script>
+
+
+    <script>
+        /*---------------------  KONEC DEKLARACI   -----------------------   */
+        const canvas = document.querySelector('#boardDesk');
+        const context = canvas.getContext("2d");
+        const desk = new Desk(32, 21);
+        const renderDesk = new RenderDesk();
+        const controller = new Controller(renderDesk, desk);
+        window.addEventListener("load", () => {
+            controller.initMenu();
+            wifiConnection();
+        });
+
+        window.addEventListener('resize', () => {
+            renderDesk.resizeCanvas();
+        });
+        window.addEventListener('orientationchange', () => {
+            renderDesk.resizeCanvas();
+        });
+
+
+
+
+        /* console.log(screen.width + " - " + screen.height);
+        console.log(window.innerWidth + " - " + window.innerHeight); */
+    </script>
+</body>
+
+</html>

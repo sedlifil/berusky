@@ -1,0 +1,373 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Shojumaru', cursive;
+}
+
+#boardDesk {
+    /* background-image: url("./images/Theme001/background.bmp");
+    background-repeat: no-repeat;
+    background-position: 0 40px;
+    border: 1px solid black;
+    background-color: black; */
+    background-image: url("./images/menu/menu_back2.png");
+    /* top: 120px;
+            left: 120px;
+            position: fixed; */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+header {
+    display: flex;
+    flex-grow: row;
+    min-height: 50px;
+    min-width: 100vw;
+    background-color: crimson;
+}
+
+header h1 {
+    padding-left: 20px;
+    margin-top: 15px;
+}
+
+footer {
+    padding: 30px;
+    text-align: center;
+    color: white;
+    background-color: black;
+}
+
+.gameName {
+    flex-grow: 2;
+}
+
+.connection {
+    padding: 28px 20px 0 0;
+}
+
+.connection #ok-wifi, .connection #no-wifi {
+    display: none;
+}
+
+.main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.main section.restMain {
+    flex-grow: 1;
+    display: flex;
+}
+
+.password {
+    background-color: #F6FFB0;
+    padding: 1rem 0.3125rem 1rem 3rem;
+    display: none;
+}
+
+.password input {
+    padding: 0.3rem;
+    font-family: 'Shojumaru', cursive;
+    font-size: 1.3rem;
+}
+
+.passwdArrowUp {
+    transform: translate(-20%, 360%) rotate(270deg) !important;
+}
+
+.controlSection {
+    background-color: white;
+    display: none;
+}
+
+#svgControl {
+    min-width: 100px;
+    max-width: 200px;
+    width: 40vw;
+    min-height: 100px;
+    max-height: 200px;
+    height: 40vw;
+    background-image: url("./images/arrowsControl.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 20px;
+    position: relative;
+    cursor: move;
+}
+
+nav.mainMenu {
+    font-size: 1.5rem;
+    transition: all 1s;
+    position: fixed;
+    min-width: 350px;
+    min-height: 100vh;
+    top: 0;
+    left: -350px;
+    padding-top: 60px;
+    background-color: white;
+    z-index: 5;
+}
+
+.mainMenu ul {
+    padding-left: 0;
+}
+
+.mainMenu ul li {
+    list-style-type: none;
+}
+
+.mainMenu ul #resetGame {
+    visibility: hidden;
+}
+
+.mainMenu ul li a, .mainMenu ul li>ul.settingsProperties li {
+    display: block;
+    width: auto;
+    /* border-top: .0625rem solid #e1e1e1; */
+    padding: 1rem .3125rem 1rem 3rem;
+    line-height: 1.5rem;
+    text-decoration: none;
+    color: #212529;
+    transition: color 1s ease;
+    -webkit-transition: color 1s ease;
+    -moz-transition: color 1s ease;
+    -o-transition: color 1s ease;
+    text-shadow: 2px 2px 4px yellow;
+    z-index: 6;
+}
+
+.mainMenu ul li a span {
+    display: inline-block;
+    background-color: inherit;
+    transform: translate(50%, 300%) rotate(90deg);
+    -webkit-transition: transform 1s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    -moz-transition: transform 1s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    -o-transition: transform 1s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    transition: transform 1s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+.mainMenu ul li a:hover {
+    color: chocolate;
+}
+
+.mainMenu ul li>ul, .mainMenu ul>li ul {
+    display: none;
+    margin: 0;
+    padding-left: 0;
+    background-color: #F6FFB0;
+}
+
+.mainMenu ul li>ul li a, .mainMenu ul li>ul li {
+    text-shadow: 2px 2px 4px goldenrod;
+}
+
+.mainMenuButton {
+    display: none;
+    -webkit-transition: transform 1s ease;
+    -moz-transition: transform 1s ease;
+    -o-transition: transform 1s ease;
+    transition: transform 1s ease;
+}
+
+.scoreboard {
+    height: 402px;
+    width: 405px;
+    position: fixed;
+    top: -402px;
+    left: 250px;
+    background-image: url("./images/menu/menu_001.bmp");
+    color: white;
+    transition: transform 1s;
+    -webkit-transition: transform 1s;
+    -moz-transition: transform 1s;
+    -o-transition: transform 1s;
+    z-index: 5;
+}
+
+.scoreboardTransition {
+    transform: translate(0, 120%);
+}
+
+.scoreboardBlackButton {
+    display: none;
+    left: 0;
+    top: 0;
+    z-index: 4;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: black;
+    position: fixed;
+    opacity: 0.95;
+}
+
+.scoreboardBlackButtonShow {
+    display: block;
+}
+
+.scoreboard table {
+    padding-top: 100px;
+    padding-left: 38px;
+}
+
+.scoreboard table th {
+    vertical-align: middle;
+    padding: 0 .65rem;
+    color: black;
+    text-shadow: 2px 2px 4px yellow;
+    font-size: 1.1rem;
+}
+
+.scoreboard table td {
+    color: white;
+    vertical-align: middle;
+    padding: 0.25rem .65rem 0 .65rem;
+}
+
+.menuToggle {
+    display: block;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.menuToggle>input[type="checkbox"] {
+    display: block;
+    width: 37px;
+    height: 28px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 12;
+}
+
+.menuToggle span {
+    z-index: 6;
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #cdcdcd;
+    border-radius: 3px;
+    z-index: 8;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
+    -webkit-transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
+    -moz-transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
+    -o-transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
+}
+
+.menuToggle span:nth-child(2) {
+    transform-origin: 0% 0%;
+}
+
+.menuToggle input:checked~.mainMenu {
+    transform: translate(100%, 0);
+}
+
+.menuToggle input:checked~span {
+    background-color: red;
+    opacity: 1;
+    transform: rotate(45deg) translate(0px, -4px);
+}
+
+.menuToggle input:checked~span:nth-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+.menuToggle input:checked~span:nth-child(4) {
+    transform: rotate(-45deg) translate(-1px, -1px);
+}
+
+.menuToggle input:checked~.mainMenuButton {
+    left: 0;
+    top: 0;
+    z-index: 4;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: black;
+    position: fixed;
+    display: block;
+    opacity: 0.5;
+    filter: blur(0.5rem);
+}
+
+/* iOS checkBox */
+
+input[type="checkbox"].ios8-switch {
+    display: none
+}
+
+input[type="checkbox"].ios8-switch+label {
+    position: relative;
+    display: inline-block;
+    padding: 0 7px 0 0;
+    float: right;
+}
+
+input[type="checkbox"].ios8-switch+label:hover {
+    cursor: pointer;
+}
+
+input[type="checkbox"].ios8-switch+label:before {
+    content: "";
+    display: inline-block;
+    left: 0;
+    top: 0;
+    width: 40px;
+    /* x*5 */
+    height: 24px;
+    /* x*3 */
+    border-radius: 16px;
+    /* x*2 */
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+input[type="checkbox"].ios8-switch+label:after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    left: 0px;
+    top: 0px;
+    width: 24px;
+    /* x*3 */
+    height: 24px;
+    /* x*3 */
+    border-radius: 16px;
+    /* x*2 */
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+input[type="checkbox"].ios8-switch+label:hover:after {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+input[type="checkbox"].ios8-switch:checked+label:after {
+    margin-left: 16px;
+}
+
+input[type="checkbox"].ios8-switch:checked+label:before {
+    background: #55D069;
+}
